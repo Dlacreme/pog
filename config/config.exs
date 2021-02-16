@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :pog,
-  ecto_repos: [Pog.Repo]
+  ecto_repos: [Pog.Repo],
+  title: System.get_env("POG_TITLE", "Kalvad")
 
 # Configures the endpoint
 config :pog, PogWeb.Endpoint,

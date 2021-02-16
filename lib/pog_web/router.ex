@@ -22,12 +22,6 @@ defmodule PogWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PogWeb do
-    pipe_through :browser
-
-    live "/", PageLive, :index
-  end
-
   use Kaffy.Routes, scope: "/admin", pipe_through: [:authenticate]
 
   # Enables LiveDashboard only for development
@@ -51,6 +45,7 @@ defmodule PogWeb.Router do
   scope "/", PogWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
+    get "/login", UserSessionController, :new
     get "/users/log_in", UserSessionController, :new
     post "/users/log_in", UserSessionController, :create
     get "/users/reset_password", UserResetPasswordController, :new
@@ -62,6 +57,7 @@ defmodule PogWeb.Router do
   scope "/", PogWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    live "/", HomeLive, :index
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/settings", UserSettingsController, :edit
