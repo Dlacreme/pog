@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Pog", suffix: " · Team" %>
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body class="bg-gray-800 text-white-400">
+    <header class="p-2">
+      <section class="container mx-auto">
+        <nav role="navigation" class="flex">
+            <a href="/">
+                <img class="h-8" src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Company logo">
+            </a>
+            <div class="flex-grow">&nbsp;</div>
+            <div class="menu relative">
+                <div class="user-menu hidden absolute top-8 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                    <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: 'block px-4 py-2 text-sm text-white-400 hover:bg-gray-700', role: 'menuitem' %>
+                    <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: 'block px-4 py-2 text-sm text-white-400 hover:bg-gray-700', role: 'menuitem' %>
+                </div>
+            </div>
+          <%= render "_user_menu.html", assigns %>
+        </nav>
+      </section>
+    </header>
+    <%= @inner_content %>
+
+    <template id="webrtc-video-template">
+        <div class="video-box">
+            <video playsinline autoplay></video>
+            <div class="mute-bar">
+            <svg onclick="mute('audio')" class="mute-audio" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+            <svg onclick="mute('video')" class="mute-video" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            </div>
+        </div>
+    </template>
+  </body>
+</html>
