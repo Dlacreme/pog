@@ -13,10 +13,6 @@ defmodule PogWeb.Router do
     plug :fetch_current_user
   end
 
-  pipeline :browser_live do
-    plug :browser
-  end
-
   pipeline :authenticate do
     plug :fetch_current_user
     plug :require_authenticated_user
@@ -59,9 +55,9 @@ defmodule PogWeb.Router do
   end
 
   scope "/", PogWeb do
-    pipe_through [:browser_live, :require_authenticated_user]
+    pipe_through [:browser, :require_authenticated_user]
 
-    live "/", HomeLive, :index
+    live "/", ChatLive, :index
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/settings", UserSettingsController, :edit

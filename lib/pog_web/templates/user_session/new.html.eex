@@ -10,9 +10,14 @@
       </div>
     <% end %>
 
+    <%= label f, :email %>
     <%= email_input f, :email, placeholder: "Email", required: true %>
+    <%= error_tag f, :email %>
 
+    <%= label f, :password %>
     <%= password_input f, :password, placeholder: "Password", required: true %>
+    <%= error_tag f, :password %>
+
 
     <div class="input checkbox">
       <%= checkbox f, :remember_me %>

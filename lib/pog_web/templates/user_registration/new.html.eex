@@ -15,12 +15,10 @@
   <%= password_input f, :password, required: true %>
   <%= error_tag f, :password %>
 
+  <%= label f, :role %>
+  <%= select f, :role_id, ["employee", "guest", "admin"] %>
+
   <div>
     <%= submit "Register" %>
   </div>
 <% end %>
-
-<p>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>

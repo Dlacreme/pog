@@ -1,0 +1,13 @@
+<div class="chat-live flex">
+    <div id="chat-list-component">
+        <%= live_component @socket, PogWeb.ChatListComponent %>
+    </div>
+    <div class="chat-container flex-grow">
+        <%= if @chat == nil do %>
+            <h1 class="m-0">Welcome.</h1>
+            <h4 class="text-xl">While you were away:</h4>
+        <% else %>
+            Chat opened
+        <% end %>
+    </div>
+</div>

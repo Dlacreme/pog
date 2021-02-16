@@ -15,10 +15,9 @@ html, body {
 }
 
 main {
-  min-height: calc(100vh - 82px);
-  height: calc(100vh - 82px);
+  min-height: calc(100vh - 53px);
+  height: calc(100vh - 53px);
   margin: auto;
-  margin-top: 20px;
   color: white;
 }
 
@@ -42,13 +41,6 @@ header {
 
 .header-section {
   padding: 0 20px;
-}
-
-#live-root {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  transition: linear all 200ms;
 }
 
 /* Alerts and form errors */

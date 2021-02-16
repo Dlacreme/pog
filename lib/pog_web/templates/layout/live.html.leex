@@ -1,4 +1,4 @@
-<main id="live-root" role="main" class="live-root chat-opened">
+<main id="live-root" role="main">
   <p class="alert alert-info" role="alert"
     phx-click="lv:clear-flash"
     phx-value-key="info"><%= live_flash(@flash, :info) %></p>
@@ -8,7 +8,4 @@
     phx-value-key="error"><%= live_flash(@flash, :error) %></p>
 
     <%= @inner_content %>
-
-    <%= live_component @socket, PogWeb.ChatListComponent %>
-
 </main>
