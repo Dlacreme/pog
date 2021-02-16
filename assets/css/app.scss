@@ -44,6 +44,13 @@ header {
   padding: 0 20px;
 }
 
+#live-root {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  transition: linear all 200ms;
+}
+
 /* Alerts and form errors */
 .alert {
   padding: 15px;

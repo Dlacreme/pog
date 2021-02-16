@@ -5,12 +5,19 @@ defmodule PogWeb.ChatListComponent do
   def render(assigns) do
     IO.puts("ASSIGNS > #{inspect assigns}")
     ~L"""
-    <div class="chat-list-component opened">
-      <h4>Chat</h4>
-      <ul>
-        <li>1</li>
-      </ul>
+    <div id="chat-list-component" class="opened">
+      <%= render_direct_messages(assigns) %>
     </div>
+    """
+  end
+
+  def render_direct_messages(assigns) do
+    ~L"""
+    <h4>Direct messages</h4>
+    <ul>
+      <li>User 1</li>
+      <li>User 2</li>
+    </ul>
     """
   end
 end

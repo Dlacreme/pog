@@ -68,3 +68,31 @@ function alignNav() {
   document.getElementById('nav-width-target').style.width = `${document.getElementById('nav-width-ref').clientWidth}px`;
 }
 alignNav();
+
+window.toggleChat = (opened) => {
+  const btns = document.getElementsByClassName('i-chat');
+  if (opened) {
+    btns[1].classList.remove('hidden')
+    btns[0].classList.add('hidden')
+  } else {
+    btns[1].classList.add('hidden')
+    btns[0].classList.remove('hidden')
+  }
+
+  const liveRoot = document.getElementById('live-root');
+  if (liveRoot) {
+    if (opened) {
+      liveRoot.classList.add('chat-opened')
+    } else {
+      liveRoot.classList.remove('chat-opened')
+    }
+  }
+  const listComponent = document.getElementById('chat-list-component');
+  if (listComponent) {
+    if (opened) {
+      listComponent.classList.add('opened')
+    } else {
+      listComponent.classList.remove('opened')
+    }
+  }
+}

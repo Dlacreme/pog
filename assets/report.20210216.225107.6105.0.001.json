@@ -1,0 +1,421 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210216.225107.6105.0.001.json",
+    "dumpEventTime": "2021-02-16T22:51:07Z",
+    "dumpEventTimeStamp": "1613512267591",
+    "processId": 6105,
+    "cwd": "/home/dlacreme/projects/pog/assets",
+    "commandLine": [
+      "/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node",
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin"
+    ],
+    "nodejsVersion": "v13.8.0",
+    "glibcVersionRuntime": "2.33",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "13.8.0",
+      "v8": "7.9.317.25-node.28",
+      "uv": "1.34.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "79",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "openssl": "1.1.1d",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v13.8.0/node-v13.8.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v13.8.0/node-v13.8.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.4.95-1-MANJARO",
+    "osVersion": "#1 SMP PREEMPT Thu Feb 4 00:38:02 UTC 2021",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2502,
+        "user": 4223400,
+        "nice": 100,
+        "sys": 627100,
+        "idle": 58323900,
+        "irq": 46500
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2547,
+        "user": 4444000,
+        "nice": 0,
+        "sys": 653400,
+        "idle": 58012100,
+        "irq": 85000
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2506,
+        "user": 4417300,
+        "nice": 0,
+        "sys": 637700,
+        "idle": 57920500,
+        "irq": 274700
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2500,
+        "user": 4569800,
+        "nice": 200,
+        "sys": 634500,
+        "idle": 57696000,
+        "irq": 338700
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2528,
+        "user": 4219200,
+        "nice": 100,
+        "sys": 689200,
+        "idle": 58298000,
+        "irq": 42100
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2500,
+        "user": 4059300,
+        "nice": 0,
+        "sys": 597900,
+        "idle": 58545400,
+        "irq": 45700
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2567,
+        "user": 4142400,
+        "nice": 46900,
+        "sys": 658900,
+        "idle": 58307300,
+        "irq": 129500
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz",
+        "speed": 2567,
+        "user": 4372700,
+        "nice": 200,
+        "sys": 634900,
+        "idle": 58194400,
+        "irq": 40900
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "wlp0s20f3",
+        "internal": false,
+        "mac": "94:e6:f7:67:81:ee",
+        "address": "192.168.1.83",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wlp0s20f3",
+        "internal": false,
+        "mac": "94:e6:f7:67:81:ee",
+        "address": "fe80::93ac:1b5:7f7f:46d7",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      }
+    ],
+    "host": "creme"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000bd0505",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000a9f86c",
+      "symbol": "node::OnFatalError(char const*, char const*) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000c0772e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000c07aa9",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000db5fb5",
+      "symbol": " [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000db6646",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000dc4eb9",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000dc5cf5",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000dc87cc",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d8f3a4",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x00000000010dc82c",
+      "symbol": "v8::internal::Runtime_AllocateInOldGeneration(int, unsigned long*, v8::internal::Isolate*) [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    },
+    {
+      "pc": "0x000000000145ce19",
+      "symbol": " [/home/dlacreme/.nvm/versions/node/v13.8.0/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2192109568,
+    "totalCommittedMemory": 2171976024,
+    "usedMemory": 2136393216,
+    "availableMemory": 38538184,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33328,
+        "capacity": 33040,
+        "used": 33040,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 13877872,
+        "capacity": 16758784,
+        "used": 2357888,
+        "available": 14400896
+      },
+      "old_space": {
+        "memorySize": 2043289600,
+        "committedMemory": 2043104520,
+        "capacity": 2023753112,
+        "used": 2022080336,
+        "available": 1672776
+      },
+      "code_space": {
+        "memorySize": 1740800,
+        "committedMemory": 1698048,
+        "capacity": 1454304,
+        "used": 1454304,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 4722688,
+        "committedMemory": 4722352,
+        "capacity": 2123120,
+        "used": 2123120,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 107917312,
+        "committedMemory": 107917312,
+        "capacity": 107799984,
+        "used": 107799984,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 544544,
+        "used": 544544,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16758784,
+        "used": 0,
+        "available": 16758784
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 512.672,
+    "kernelCpuSeconds": 9.17935,
+    "cpuConsumptionPercent": 18.0947,
+    "maxRss": 2588545024,
+    "pageFaults": {
+      "IORequired": 0,
+      "IONotRequired": 3513079
+    },
+    "fsActivity": {
+      "reads": 32,
+      "writes": 445120
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 213.828,
+    "kernelCpuSeconds": 4.06646,
+    "cpuConsumptionPercent": 7.5553,
+    "fsActivity": {
+      "reads": 0,
+      "writes": 24
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "BINDIR": "/usr/lib/erlang/erts-11.1.6/bin",
+    "ASDF_DIR": "/home/dlacreme/.asdf",
+    "COLORTERM": "truecolor",
+    "BROWSER": "/usr/bin/palemoon",
+    "DESKTOP_SESSION": "i3",
+    "DISPLAY": ":0",
+    "FLUTTER_HOME": "/opt/flutter",
+    "EMU": "beam",
+    "EDITOR": "/usr/bin/nano",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "GNOME_TERMINAL_SCREEN": "/org/gnome/Terminal/screen/f3dc42a3_c413_400f_b3d1_2f029c79d005",
+    "GTK2_RC_FILES": "/home/dlacreme/.gtkrc-2.0",
+    "GRADLE_HOME": "/usr/share/java/gradle",
+    "GNOME_TERMINAL_SERVICE": ":1.26",
+    "I3SOCK": "/run/user/1000/i3/ipc-socket.1221",
+    "HOME": "/home/dlacreme",
+    "LC_ADDRESS": "fr_FR.UTF-8",
+    "LANG": "en_US.UTF-8",
+    "GTK_MODULES": "canberra-gtk-module",
+    "GDMSESSION": "i3",
+    "LC_MONETARY": "fr_FR.UTF-8",
+    "LC_MEASUREMENT": "fr_FR.UTF-8",
+    "LC_PAPER": "fr_FR.UTF-8",
+    "LC_NUMERIC": "fr_FR.UTF-8",
+    "LC_NAME": "fr_FR.UTF-8",
+    "LOGNAME": "dlacreme",
+    "LC_TIME": "fr_FR.UTF-8",
+    "MOTD_SHOWN": "pam",
+    "MAIL": "/var/spool/mail/dlacreme",
+    "LC_TELEPHONE": "fr_FR.UTF-8",
+    "NVM_DIR": "/home/dlacreme/.nvm",
+    "NVM_CD_FLAGS": "",
+    "PATH": "/usr/lib/erlang/erts-11.1.6/bin:/usr/lib/erlang/bin:/home/dlacreme/.asdf/shims:/home/dlacreme/.asdf/bin:/home/dlacreme/.cargo/bin:/home/dlacreme/.nvm/versions/node/v13.8.0/bin:/home/dlacreme/.cargo/bin:/home/dlacreme/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/opt/flutter/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/dlacreme/.rvm/bin:/home/dlacreme/.rvm/bin:/home/dlacreme/.gem/ruby/2.7.0/bin",
+    "OLDPWD": "/home/dlacreme",
+    "PWD": "/home/dlacreme/projects/pog",
+    "SHELL": "/bin/bash",
+    "ROOTDIR": "/usr/lib/erlang",
+    "QT_QPA_PLATFORMTHEME": "qt5ct",
+    "PROGNAME": "erl",
+    "TERM": "xterm-256color",
+    "VTE_VERSION": "6202",
+    "USER": "dlacreme",
+    "XDG_GREETER_DATA_DIR": "/var/lib/lightdm-data/dlacreme",
+    "XDG_CURRENT_DESKTOP": "i3",
+    "XDG_SEAT": "seat0",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "XDG_SESSION_DESKTOP": "i3",
+    "XDG_SESSION_CLASS": "user",
+    "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session0",
+    "XDG_VTNR": "7",
+    "XDG_SESSION_TYPE": "x11",
+    "XDG_SESSION_ID": "2",
+    "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+    "XAUTHORITY": "/home/dlacreme/.Xauthority",
+    "SHLVL": "1",
+    "NVM_BIN": "/home/dlacreme/.nvm/versions/node/v13.8.0/bin",
+    "LC_IDENTIFICATION": "fr_FR.UTF-8"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 524288,
+      "hard": 524288
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 62714,
+      "hard": 62714
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/usr/lib/libdl.so.2",
+    "/usr/lib/libstdc++.so.6",
+    "/usr/lib/libm.so.6",
+    "/usr/lib/libgcc_s.so.1",
+    "/usr/lib/libpthread.so.0",
+    "/usr/lib/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/home/dlacreme/projects/pog/assets/node_modules/node-sass/vendor/linux-x64-79/binding.node"
+  ]
+}
