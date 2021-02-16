@@ -63,3 +63,8 @@ window.getter = {
     class: getByClassNames,
     id: getById,
 }
+
+function alignNav() {
+  document.getElementById('nav-width-target').style.width = `${document.getElementById('nav-width-ref').clientWidth}px`;
+}
+alignNav();

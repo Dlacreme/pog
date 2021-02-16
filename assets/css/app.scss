@@ -4,6 +4,11 @@
 @import "../node_modules/nprogress/nprogress.css";
 @import "./variables";
 @import "./form";
+@import "./chat";
+
+.hidden {
+  display: none !important;
+}
 
 html, body {
   height: 100%;
@@ -33,6 +38,10 @@ header {
   color: white;
   font-weight: bold;
   border-bottom: 2px solid $color-main;
+}
+
+.header-section {
+  padding: 0 20px;
 }
 
 /* Alerts and form errors */
@@ -69,6 +78,13 @@ header {
   margin: -1rem 0 2rem;
 }
 
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50
+}
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
