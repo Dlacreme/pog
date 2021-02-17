@@ -35,3 +35,23 @@ h2 {
   font-size: 1.3em;
   padding-bottom: 14px;
 }
+
+.footer form {
+  button {
+    width: 46px;
+    height: 42px;
+    background-color: transparent;
+    min-width: 42px;
+    padding: 0 5px;
+  }
+  textarea {
+    min-height: 51px;
+    padding: 12px;
+  }
+}
+
+.body {
+  div {
+    background-color: #222932;
+  }
+}
