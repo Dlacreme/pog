@@ -19,7 +19,7 @@ defmodule PogWeb.ChatListComponent do
     <h4>Direct messages</h4>
     <ul>
       <%= for u <- users do %>
-        <li phx-click="chat_with" phx-value="<%= u.id %>"> <%= u.email %></li>
+        <li phx-click="chat_with" phx-value-id="<%= u.id %>"> <%= u.email %></li>
       <% end %>
     </ul>
     """

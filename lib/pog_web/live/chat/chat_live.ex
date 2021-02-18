@@ -12,17 +12,15 @@ defmodule PogWeb.ChatLive do
   end
 
   @impl true
-  def handle_event("chat_with", user_id, socket) do
+  def handle_event("chat_with", %{"id" => user_id}, socket) do
     {:noreply, assign(socket,
       input: "",
       messages: get_messages(),
-      peer: get_peer(user_id),
-    )}
+      peer: get_peer(user_id))}
   end
 
   @impl true
   def handle_event("submit", %{"m" => message}, socket) do
-    IO.puts("SOCKET > #{inspect socket.assigns.messages}")
     {:noreply, assign(socket, input: "", messages: socket.assigns.messages ++ [%{
       user_id: "aa",
       content: message,
@@ -37,6 +35,7 @@ defmodule PogWeb.ChatLive do
   end
 
   defp get_peer(user_id) do
+    IO.puts("PEER PROFILE > #{inspect Pog.Accounts.get_profile(user_id)}")
     %{
       user_id: user_id,
       name: "Hello world",

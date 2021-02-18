@@ -6,6 +6,42 @@ defmodule Pog.Accounts do
   import Ecto.Query, warn: false
   alias Pog.Repo
   alias Pog.Accounts.{User, UserToken, UserNotifier}
+  alias Pog.Team.Employee
+
+  def get_profile(user_id) do
+    user = get_user!(user_id)
+    get_profile(user, user.role_id)
+  end
+
+  def get_profile(user = %User{}, emp = %Employee{}) do
+    name =  "#{emp.first_name || ""} #{emp.last_name || ""}"
+    IO.puts("EMPLOYEE > #{inspect emp}")
+    %Pog.Accounts.Profile{
+      user_id: user.id,
+      name: (if (name != ""), do: name, else: user.email),
+      title: emp.position || "",
+    }
+  end
+
+  def get_profile(user = %User{}, nil) do
+    %Pog.Accounts.Profile{
+      user_id: user.id,
+      name: user.email,
+      title: ""
+    }
+  end
+
+  def get_profile(user = %User{}, "admin") do
+    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id))
+  end
+
+  def get_profile(user = %User{}, "employee") do
+    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id))
+  end
+
+  def get_profile(user = %User{}, "guest") do
+    get_profile(user, nil)
+  end
 
   ## Database getters
 
