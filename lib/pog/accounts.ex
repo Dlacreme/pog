@@ -15,7 +15,6 @@ defmodule Pog.Accounts do
 
   def get_profile(user = %User{}, emp = %Employee{}) do
     name =  "#{emp.first_name || ""} #{emp.last_name || ""}"
-    IO.puts("EMPLOYEE > #{inspect emp}")
     %Pog.Accounts.Profile{
       user_id: user.id,
       name: (if (name != ""), do: name, else: user.email),

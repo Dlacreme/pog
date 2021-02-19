@@ -5,7 +5,7 @@ defmodule Pog.Chat.Peer do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "chat_peers" do
-    field :nb_notif, :integer
+    field :nb_notif, :integer, default: 0
     belongs_to :chat_conversation, Pog.Chat.Conversation, foreign_key: :conversation_id
     belongs_to :user, Pog.Accounts.User
 
@@ -15,7 +15,7 @@ defmodule Pog.Chat.Peer do
   @doc false
   def changeset(peer, attrs) do
     peer
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:user_id, :conversation_id])
+    |> validate_required([:conversation_id])
   end
 end

@@ -5,6 +5,7 @@ defmodule Pog.Chat.Conversation do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "chat_conversations" do
+    has_many :peers, Pog.Chat.Peer, foreign_key: :conversation_id, references: :id
     timestamps()
   end
 
