@@ -32,6 +32,17 @@ h1 {
   margin-bottom: 20px;
 }
 
+.welcome {
+  ul {
+    list-style: disc;
+    margin-left: 20px
+  }
+  p {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+}
+
 header {
   background-color: #222932;
   color: white;

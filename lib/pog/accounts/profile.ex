@@ -3,12 +3,14 @@ defmodule Pog.Accounts.Profile do
   defstruct user_id: nil,
             name: nil,
             title: nil,
-            picture_url: "https://p1.hiclipart.com/preview/295/13/148/ed-sheeran-random-man-wearing-black-long-sleeved-shirt.jpg"
+            picture_url: "https://p1.hiclipart.com/preview/295/13/148/ed-sheeran-random-man-wearing-black-long-sleeved-shirt.jpg",
+            meta: nil
 
   @type t() :: %__MODULE__{
           user_id: String.t(),
           name: String.t(),
           title: String.t(),
           picture_url: String.t(),
+          meta: Map.t(),
         }
 end

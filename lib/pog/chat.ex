@@ -3,12 +3,27 @@ defmodule Pog.Chat do
 
   alias Pog.Chat.Conversation
   alias Pog.Chat.Peer
+  alias Pog.Chat.Message
+
+  @doc """
+  Add a message to a @conversation_id
+  """
+  def send_message(peer = %Peer{}, content) do
+    m = %Message{}
+      |> Message.changeset(%{peer_id: peer.id, content: content})
+      |> Pog.Repo.insert()
+    m
+  end
+
+  def send_message(user_id, conversation_id, content) do
+    send_message Pog.Repo.get_by!(Peer, user_id: user_id, conversation_id: conversation_id), content
+  end
 
   @doc """
   Get the peers provide of @conversation_id
   """
   def get_peers_profile(conversation_id) do
-    {:ok, Enum.map(get_peers(conversation_id), fn p -> Pog.Accounts.get_profile(p.user_id) end)}
+    {:ok, Enum.map(get_peers(conversation_id), fn p -> Pog.Accounts.get_profile(p.user_id, %{peer_id: p.id}) end)}
   end
 
   @doc """

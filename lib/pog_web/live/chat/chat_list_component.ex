@@ -15,6 +15,7 @@ defmodule PogWeb.ChatListComponent do
   def render_direct_messages(assigns) do
     users = from(u in User, where: u.role_id != ^"guest", order_by: u.email)
       |> Pog.Repo.all()
+      |> Enum.filter(fn u -> u.id != assigns.current_user_id end)
     ~L"""
     <h4>Direct messages</h4>
     <ul>

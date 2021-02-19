@@ -8,38 +8,40 @@ defmodule Pog.Accounts do
   alias Pog.Accounts.{User, UserToken, UserNotifier}
   alias Pog.Team.Employee
 
-  def get_profile(user_id) do
+  def get_profile(user_id, meta \\ nil) do
     user = get_user!(user_id)
-    get_profile(user, user.role_id)
+    get_profile(user, user.role_id, meta)
   end
 
-  def get_profile(user = %User{}, emp = %Employee{}) do
+  def get_profile(user = %User{}, emp = %Employee{}, meta) do
     name =  "#{emp.first_name || ""} #{emp.last_name || ""}"
     %Pog.Accounts.Profile{
       user_id: user.id,
       name: (if (name != ""), do: name, else: user.email),
       title: emp.position || "",
+      meta: meta
     }
   end
 
-  def get_profile(user = %User{}, nil) do
+  def get_profile(user = %User{}, nil, meta) do
     %Pog.Accounts.Profile{
       user_id: user.id,
       name: user.email,
-      title: ""
+      title: "",
+      meta: meta
     }
   end
 
-  def get_profile(user = %User{}, "admin") do
-    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id))
+  def get_profile(user = %User{}, "admin", meta) do
+    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id), meta)
   end
 
-  def get_profile(user = %User{}, "employee") do
-    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id))
+  def get_profile(user = %User{}, "employee", meta) do
+    get_profile(user, Repo.get_by(Pog.Team.Employee, user_id: user.id), meta)
   end
 
-  def get_profile(user = %User{}, "guest") do
-    get_profile(user, nil)
+  def get_profile(user = %User{}, "guest", meta) do
+    get_profile(user, nil, meta)
   end
 
   ## Database getters

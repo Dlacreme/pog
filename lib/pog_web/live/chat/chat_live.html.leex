@@ -1,36 +1,23 @@
 <div class="chat-live flex">
     <div id="chat-list-component">
-        <%= live_component @socket, PogWeb.ChatListComponent %>
+        <%= live_component @socket, PogWeb.ChatListComponent, current_user_id: @current_user.id %>
     </div>
-        <%= if @peer == nil do %>
-        <div class="chat-container flex-grow">
-            <h1 class="m-0">Welcome.</h1>
-            <h4 class="text-xl">While you were away:</h4>
-        </div>
+        <%= if @conv == nil do %>
+        <%= live_component @socket, PogWeb.ChatWelcomeComponent %>
         <% else %>
         <div class="chat-container flex flex-col flex-grow">
             <div class="header flex items-center">
-                <h2 class="flex-grow"><%= @peer.name %></h2>
-
-                <div class="actions">
-                    <button class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                    </button>
-                </div>
+                <%= live_component @socket, PogWeb.ChatHeaderComponent, peers: @peers, current_user_id: @current_user.id %>
             </div>
             <div class="body flex-grow">
                 <%= for m <- @messages do %>
-                <div>
-                    <span><%= m.user_id %></span>
-                    <p><%= m.content %></p>
-                </div>
+                    <%= live_component @socket, PogWeb.ChatMessageComponent, peers: @peers, current_user_id: @current_user.id, message: m %>
                 <% end %>
             </div>
             <div class="footer">
                 <form phx-submit="submit" class="flex flex-row" action="javascript:void(0);">
-                    <textarea class="flex-grow" type="text" name="m" placeholder="Type your message..." value="<%= @input %>"  >
+                    <%# <textarea class="flex-grow" type="text" name="m" placeholder="Type your message..." value="<%= @input %>
+                    <input class="flex-grow" type="text" name="m" placeholder="Type your message..." value="<%= @input %>" />
                     <%= @input %></textarea>
                     <div>
                         <button type="submit" phx-disable-with="...">

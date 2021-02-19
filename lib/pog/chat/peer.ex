@@ -8,7 +8,7 @@ defmodule Pog.Chat.Peer do
     field :nb_notif, :integer, default: 0
     belongs_to :chat_conversation, Pog.Chat.Conversation, foreign_key: :conversation_id
     belongs_to :user, Pog.Accounts.User
-
+    has_many :messages, Pog.Chat.Message, foreign_key: :peer_id, references: :id
     timestamps(updated_at: false)
   end
 
