@@ -13,10 +13,13 @@
     <header class="p-2">
       <section class="header-section mx-auto">
         <nav role="navigation" class="flex items-center">
-            <div class="focus flex-grow flex">
+            <div class="focus flex">
                 <a href="/">
                     <img class="h-8" src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Company logo">
                 </a>
+            </div>
+            <div class="chat-with flex-grow text-center">
+                <input type="text" placeholder="Chat with... (ctrl+k)" disabled />
             </div>
             <div id="nav-width-ref">
                 <div class="menu relative">

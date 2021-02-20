@@ -2,6 +2,17 @@
   height: 100%;
 }
 
+.chat-with {
+  input {
+    height: 30px;
+    padding: 8px;
+    border-radius: 15px;
+    border: 0;
+    width: 500px;
+    margin: 0 30px;
+  }
+}
+
 #chat-list-component {
   transition: linear all 200ms;
   width: 240px;
