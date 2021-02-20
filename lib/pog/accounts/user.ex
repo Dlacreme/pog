@@ -11,7 +11,6 @@ defmodule Pog.Accounts.User do
     field :role_id, :string
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
-
     timestamps()
   end
 

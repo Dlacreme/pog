@@ -11,8 +11,9 @@ defmodule Pog.Chat do
     source = Pog.Repo.all(
       from(c in Conversation,
         join: p in assoc(c, :peers),
+        join: u in assoc(p, :user),
         where: p.user_id == ^user_id,
-        select: %{conversation: c, peer: p}
+        select: %{conversation: c, peer: %{meta: p, user: u}}
       ))
     build_conversations([], source)
   end
@@ -26,6 +27,7 @@ defmodule Pog.Chat do
     case Enum.find_index(dest, fn d -> d.id == s.conversation.id end) do
       nil -> build_conversations([%{
         id: s.conversation.id,
+        name: s.conversation.name,
         peers: [],
       } | dest], source)
       row_index ->
@@ -63,11 +65,15 @@ defmodule Pog.Chat do
     Pog.Repo.all(from p in Peer, where: p.conversation_id == ^conversation_id)
   end
 
+  def get_conversation(id) do
+    {:ok, Pog.Repo.get!(Conversation, id)}
+  end
+
   @doc """
   Get the existing conversation with the giver user ids
   or create a new one
   """
-  def get_conversation(user_ids) do
+  def get_conversation_with_user(user_ids) do
     convs = Ecto.Adapters.SQL.query!(Pog.Repo,
       "SELECT p.conversation_id FROM chat_peers p WHERE user_id IN (#{
         Enum.map(user_ids, fn uid -> "'#{uid}'" end) |> Enum.join(",")}) GROUP BY conversation_id HAVING COUNT(p.id) = #{

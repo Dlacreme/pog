@@ -7,7 +7,6 @@ defmodule PogWeb.ChatListComponent do
 
   @impl true
   def render(assigns) do
-    IO.puts("NOTIFICATIONS >> #{inspect assigns.notifications}")
     ~L"""
     <div>
       <%= render_direct_messages(assigns) %>
@@ -16,26 +15,60 @@ defmodule PogWeb.ChatListComponent do
   end
 
   defp render_direct_messages(assigns) do
-    users = from(u in User, where: u.role_id != ^"guest", order_by: u.email)
-      |> Pog.Repo.all()
-      |> Enum.filter(fn u -> u.id != assigns.current_user_id end)
-    # convs_ids = Pog.Repo.all(from(p in Peer, where: p.user_id == ^assigns.current_user_id,
-      # select: %{conversation: }))
-    # convs = Pog.Repo.all(
-    #   from(c in Conversation,
-    #     join: p in assoc(c, :peers),
-    #     where: p.user_id == ^assigns.current_user_id,
-    #     select: %{conversation: c, peer: p}
-    #   ))
     convs = Pog.Chat.list_conversations(assigns.current_user_id)
-    IO.puts("ALL CONVERSATION >> #{inspect convs}")
     ~L"""
-    <h4>Direct messages</h4>
     <ul>
-      <%= for u <- users do %>
-        <li phx-click="chat_with" phx-value-id="<%= u.id %>"> <%= u.email %></li>
+      <%= for c <- convs do %>
+        <%= chat_line(assigns, c) %>
       <% end %>
     </ul>
+    """
+  end
+
+  defp chat_line(assigns, conv) do
+    ~L"""
+    <li phx-click="open_chat" phx-value-id="<%= conv.id %>" class="flex items-center">
+      <%= render_notification(assigns, Enum.find(assigns.notifications, fn nw -> nw.conversation_id == conv.id end)) %>
+      <%= if conv.name != nil do %>
+        <span><%= conv.name %></span>
+      <% else %>
+        <%= load_name(assigns, conv) %>
+      <% end %>
+    </li>
+    """
+  end
+
+  defp load_name(assigns, conv) do
+    {:ok, peers} = Pog.Chat.get_peers_profile(conv.id)
+    fps = Enum.filter(peers, fn p -> p.user_id != assigns.current_user_id end)
+    ~L"""
+    <div class="flex items-center">
+      <%= if length(fps) == 1 do %>
+        <%= for p <- fps do %>
+          <img height="40px" width="40px" src="<%= p.picture_url %>" alt="<%= p.name %> pic" />
+          <span><%= p.name %></span>
+        <% end %>
+      <% else %>
+        <div class="flex items-center">
+          <%= for p <- fps do %>
+            <img height="40px" width="40px" src="<%= p.picture_url %>" alt="<%= p.name %> pic" />
+          <% end %>
+        </div>
+        <div class="flex items-center">
+          <%= for p <- fps do %>
+            <span><%= p.name %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    """
+  end
+
+  defp render_notification(assigns, notif_wrapper) do
+    ~L"""
+    <%= if notif_wrapper != nil && notif_wrapper.nb_notif > 0 do  %>
+      <span class="notif"><%= notif_wrapper.nb_notif %></span>
+    <% end %>
     """
   end
 

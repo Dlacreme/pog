@@ -21,16 +21,14 @@ defmodule PogWeb.ChatLive do
 
   @impl true
   def handle_event("chat_with", %{"id" => user_id}, socket) do
-    {:ok, conv} = Chat.get_conversation([user_id, socket.assigns.current_user.id])
-    {:ok, peers} = Chat.get_peers_profile(conv.id)
-    clear_notification(Enum.find(peers, fn p -> p.user_id == socket.assigns.current_user.id end).meta.peer)
-    {:noreply,
-     assign(socket,
-       input: "",
-       conv: conv,
-       messages: get_messages(peers),
-       peers: peers
-     )}
+    {:ok, conv} = Chat.get_conversation_with_user([user_id, socket.assigns.current_user.id])
+    open_conversation(socket, conv)
+  end
+
+  @impl true
+  def handle_event("open_chat", %{"id" => chat_id}, socket) do
+    {:ok, conv} = Chat.get_conversation(chat_id)
+    open_conversation(socket, conv)
   end
 
   @impl true
@@ -49,6 +47,19 @@ defmodule PogWeb.ChatLive do
       true -> {:noreply, assign(socket, messages: get_messages(socket.assigns.peers))}
       false -> {:noreply, assign(socket, notifications: get_notifications(socket.assigns.current_user.id))}
     end
+  end
+
+  defp open_conversation(socket, %Chat.Conversation{} = conv) do
+    {:ok, peers} = Chat.get_peers_profile(conv.id)
+    clear_notification(Enum.find(peers, fn p -> p.user_id == socket.assigns.current_user.id end).meta.peer)
+    {:noreply,
+     assign(socket,
+       input: "",
+       conv: conv,
+       messages: get_messages(peers),
+       peers: peers,
+       notifications: get_notifications(socket.assigns.current_user.id)
+     )}
   end
 
   defp get_messages(peers) do

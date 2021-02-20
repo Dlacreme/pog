@@ -19,6 +19,19 @@
     li {
       padding: 4px 12px;
       cursor: pointer;
+      position: relative;
+      .notif {
+        position: absolute;
+        right: 5px;
+        display: inline-block;
+        background-color: red;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        font-weight: bold;
+        padding-right: 2px;
+      }
       &:hover {
         background-color: #1f2937;
       }
@@ -51,6 +64,8 @@ h2 {
 }
 
 .body {
+  max-height: calc(100vh - 220px);
+  overflow: auto;
   div {
     background-color: #222932;
   }
