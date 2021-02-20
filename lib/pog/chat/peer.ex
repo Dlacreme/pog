@@ -15,7 +15,7 @@ defmodule Pog.Chat.Peer do
   @doc false
   def changeset(peer, attrs) do
     peer
-    |> cast(attrs, [:user_id, :conversation_id])
+    |> cast(attrs, [:user_id, :conversation_id, :nb_notif])
     |> validate_required([:conversation_id])
   end
 end

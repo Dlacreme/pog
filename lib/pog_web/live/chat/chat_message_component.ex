@@ -24,6 +24,6 @@ defmodule PogWeb.ChatMessageComponent do
   end
 
   defp get_peer(assigns) do
-    Enum.find(assigns.peers, fn p -> p.meta.peer_id == assigns.message.peer_id end)
+    Enum.find(assigns.peers, fn p -> p.meta.peer.id == assigns.message.peer_id end)
   end
 end

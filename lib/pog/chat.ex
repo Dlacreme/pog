@@ -6,13 +6,43 @@ defmodule Pog.Chat do
   alias Pog.Chat.Message
 
   @doc """
+  """
+  def list_conversations(user_id) do
+    source = Pog.Repo.all(
+      from(c in Conversation,
+        join: p in assoc(c, :peers),
+        where: p.user_id == ^user_id,
+        select: %{conversation: c, peer: p}
+      ))
+    build_conversations([], source)
+  end
+
+  def build_conversations(dest, source) when length(source) == 0 do
+    dest
+  end
+
+  def build_conversations(dest, source) do
+    s = List.first(source)
+    case Enum.find_index(dest, fn d -> d.id == s.conversation.id end) do
+      nil -> build_conversations([%{
+        id: s.conversation.id,
+        peers: [],
+      } | dest], source)
+      row_index ->
+        build_conversations(List.update_at(dest, row_index, fn r -> Map.put(r, :peers, [s.peer | r.peers]) end), List.delete_at(source, 0))
+    end
+  end
+
+  @doc """
   Add a message to a @conversation_id
   """
   def send_message(peer = %Peer{}, content) do
-    m = %Message{}
+    {:ok, m} = %Message{}
       |> Message.changeset(%{peer_id: peer.id, content: content})
       |> Pog.Repo.insert()
-    m
+    notify_other_peers(Pog.Repo.all(from p in Peer,
+      where: p.conversation_id == ^peer.conversation_id and p.id != ^peer.id), m)
+    {:ok, m}
   end
 
   def send_message(user_id, conversation_id, content) do
@@ -23,7 +53,7 @@ defmodule Pog.Chat do
   Get the peers provide of @conversation_id
   """
   def get_peers_profile(conversation_id) do
-    {:ok, Enum.map(get_peers(conversation_id), fn p -> Pog.Accounts.get_profile(p.user_id, %{peer_id: p.id}) end)}
+    {:ok, Enum.map(get_peers(conversation_id), fn p -> Pog.Accounts.get_profile(p.user_id, %{peer: p}) end)}
   end
 
   @doc """
@@ -47,6 +77,18 @@ defmodule Pog.Chat do
       1 -> {:ok, Pog.Repo.get!(Conversation, Ecto.UUID.cast! List.first(List.first(convs.rows)))}
       _too_many -> merge_and_get(convs.rows)
     end
+  end
+
+  defp notify_other_peers(peers, message) do
+    Enum.each(peers, fn p -> notify_peer(p, message) end)
+    :ok
+  end
+
+  defp notify_peer(peer, message) do
+    Peer.changeset(peer, %{nb_notif: peer.nb_notif + 1})
+      |> Pog.Repo.update()
+    Phoenix.PubSub.broadcast(Pog.PubSub, peer.user_id, {:new_message, message})
+    :ok
   end
 
   defp create_conversation(user_ids) do

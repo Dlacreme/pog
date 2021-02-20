@@ -1,6 +1,6 @@
 <div class="chat-live flex">
     <div id="chat-list-component">
-        <%= live_component @socket, PogWeb.ChatListComponent, current_user_id: @current_user.id %>
+        <%= live_component @socket, PogWeb.ChatListComponent, current_user_id: @current_user.id, notifications: @notifications %>
     </div>
         <%= if @conv == nil do %>
         <%= live_component @socket, PogWeb.ChatWelcomeComponent %>
