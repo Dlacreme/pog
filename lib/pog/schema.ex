@@ -7,11 +7,11 @@ defmodule Pog.Schema do
       @derive {Phoenix.Param, key: :id}
 
       def first do
-        __MODULE__ |> Ecto.Query.first() |> Distanciel.Repo.one()
+        __MODULE__ |> Ecto.Query.first() |> Pog.Repo.one()
       end
 
       def last do
-        __MODULE__ |> Ecto.Query.last() |> Distanciel.Repo.one()
+        __MODULE__ |> Ecto.Query.last() |> Pog.Repo.one()
       end
     end
   end
