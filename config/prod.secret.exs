@@ -39,3 +39,12 @@ config :pog, PogWeb.Endpoint,
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.
+
+smtp_email_address =
+  System.get_env("SMTP_EMAIL_ADDRESS") ||
+    raise """
+      environment variable SMTP_EMAIL_ADDRESS is missing
+      For example "hello@example.com"
+    """
+
+config :pog, Pog.Mailer, smtp_email_address: smtp_email_address

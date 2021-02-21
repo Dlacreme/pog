@@ -1,5 +1,6 @@
 defmodule PogWeb.UserRegistrationControllerTest do
   use PogWeb.ConnCase, async: true
+  use Bamboo.Test
 
   import Pog.AccountsFixtures
 
@@ -7,9 +8,9 @@ defmodule PogWeb.UserRegistrationControllerTest do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.user_registration_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Register</h1>"
-      assert response =~ "Log in</a>"
-      assert response =~ "Register</a>"
+      assert response =~ "Register your account"
+      assert response =~ "Sign in to your account</a>"
+      assert response =~ "Register</button>"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -34,9 +35,12 @@ defmodule PogWeb.UserRegistrationControllerTest do
       # Now do a logged in request and assert on the menu
       conn = get(conn, "/")
       response = html_response(conn, 200)
-      assert response =~ email
-      assert response =~ "Settings</a>"
+      assert response =~ "#{email}</a>"
       assert response =~ "Log out</a>"
+
+      assert_delivered_email_matches(%{to: user_email, text_body: text_body})
+      assert user_email == [nil: email]
+      assert text_body =~ "/users/confirm/"
     end
 
     test "render errors for invalid data", %{conn: conn} do
@@ -46,9 +50,9 @@ defmodule PogWeb.UserRegistrationControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Register</h1>"
+      assert response =~ "Register your account"
       assert response =~ "must have the @ sign and no spaces"
-      assert response =~ "should be at least 8 character"
+      assert response =~ "should be at least 12 character"
     end
   end
 end

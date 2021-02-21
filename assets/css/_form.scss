@@ -6,7 +6,7 @@ a:hover {
   color: $color-main;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
 
@@ -33,7 +33,7 @@ form {
 
 }
 
-button {
+.button {
   border-radius: 4px;
   height: 42px;
   min-width: 80px;
@@ -45,7 +45,7 @@ button {
   }
 }
 
-button.icon {
+.button.icon {
   min-width: 38px;
   min-height: 38px;
   width: 38px;

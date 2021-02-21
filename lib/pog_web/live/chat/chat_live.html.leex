@@ -15,12 +15,12 @@
                 <% end %>
             </div>
             <div class="footer">
-                <form phx-submit="submit" class="flex flex-row" action="javascript:void(0);">
+                <form phx-submit="submit" class="flex flex-row form" action="javascript:void(0);">
                     <%# <textarea class="flex-grow" type="text" name="m" placeholder="Type your message..." value="<%= @input %>
                     <input class="flex-grow" type="text" name="m" placeholder="Type your message..." value="<%= @input %>" />
                     <%= @input %></textarea>
                     <div>
-                        <button type="submit" phx-disable-with="...">
+                        <button type="submit" phx-disable-with="..." class="button">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>

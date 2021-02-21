@@ -36,6 +36,14 @@ config :kaffy,
   ecto_repo: Pog.Repo,
   router: PogWeb.Router
 
+config :pog, Pog.Cldr,
+  default_locale: "en",
+  locales: ["fr", "en"],
+  gettext: PogWeb.Gettext,
+  data_dir: "./priv/cldr"
+
+config :pog, Pog.Mailer, adapter: Bamboo.LocalAdapter
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

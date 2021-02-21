@@ -66,4 +66,8 @@ defmodule PogWeb.ConnCase do
     |> Phoenix.ConnTest.init_test_session(%{})
     |> Plug.Conn.put_session(:user_token, token)
   end
+
+  def set_locale(conn, locale) do
+    conn |> Plug.Conn.put_session(:locale, locale)
+  end
 end

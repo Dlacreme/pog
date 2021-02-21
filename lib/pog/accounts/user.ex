@@ -1,16 +1,15 @@
 defmodule Pog.Accounts.User do
-  use Ecto.Schema
+  use Pog.Schema
   import Ecto.Changeset
+  import PogWeb.Gettext
 
   @derive {Inspect, except: [:password]}
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true
-    field :role_id, :string
+    field :role_id, :string, default: "guest"
     field :hashed_password, :string
-    field :confirmed_at, :naive_datetime
+    field :confirmed_at, :utc_datetime
     timestamps()
   end
 
@@ -33,7 +32,7 @@ defmodule Pog.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :role_id])
+    |> cast(attrs, [:email, :password])
     |> validate_email()
     |> validate_password(opts)
   end
@@ -41,7 +40,9 @@ defmodule Pog.Accounts.User do
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/,
+      message: dgettext("errors", "must have the @ sign and no spaces")
+    )
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, Pog.Repo)
     |> unique_constraint(:email)
@@ -80,8 +81,15 @@ defmodule Pog.Accounts.User do
     |> cast(attrs, [:email])
     |> validate_email()
     |> case do
-      %{changes: %{email: _}} = changeset -> changeset
-      %{} = changeset -> add_error(changeset, :email, "did not change")
+      %{changes: %{email: _}} = changeset ->
+        changeset
+
+      %{} = changeset ->
+        add_error(
+          changeset,
+          :email,
+          dgettext("errors", "did not change")
+        )
     end
   end
 
@@ -100,7 +108,7 @@ defmodule Pog.Accounts.User do
   def password_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:password])
-    |> validate_confirmation(:password, message: "does not match password")
+    |> validate_confirmation(:password, message: dgettext("errors", "does not match password"))
     |> validate_password(opts)
   end
 
@@ -108,10 +116,11 @@ defmodule Pog.Accounts.User do
   Confirms the account by setting `confirmed_at`.
   """
   def confirm_changeset(user) do
-    now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
+    now = DateTime.now!("Etc/UTC") |> DateTime.truncate(:second)
     change(user, confirmed_at: now)
   end
 
+  @spec valid_password?(any, any) :: boolean
   @doc """
   Verifies the password.
 
@@ -135,7 +144,7 @@ defmodule Pog.Accounts.User do
     if valid_password?(changeset.data, password) do
       changeset
     else
-      add_error(changeset, :current_password, "is not valid")
+      add_error(changeset, :current_password, dgettext("errors", "is not valid"))
     end
   end
 end
