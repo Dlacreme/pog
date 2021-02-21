@@ -11,6 +11,8 @@ defmodule Pog.Accounts.User do
     field :hashed_password, :string
     field :confirmed_at, :utc_datetime
     timestamps()
+
+    has_one :employee, Pog.Team.Employee
   end
 
   @doc """

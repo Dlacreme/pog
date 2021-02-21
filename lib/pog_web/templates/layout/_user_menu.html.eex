@@ -1,5 +1,13 @@
 <ul class="flex items-center">
   <%= if @current_user do %>
+    <a href="/">
+        <button class="mr-6 flex items-center button">
+            <i style="height: 24px;width: 24px;display: inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg></i>&nbsp;New chat
+        </button>
+    </a>
     <%= live_patch @current_user.email, to: Routes.user_settings_path(@conn, :edit),
         class: "text-base font-medium text-white hover:text-purple-500" %>
     <%= link gettext("Log out"), to: Routes.user_session_path(@conn, :delete), method: :delete,

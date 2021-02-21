@@ -7,15 +7,20 @@ defmodule PogWeb.ChatListComponent do
 
   @impl true
   def render(assigns) do
-    ~L"""
-    <div>
-      <%= render_direct_messages(assigns) %>
-    </div>
-    """
+    convs = Pog.Chat.list_conversations(assigns.current_user_id)
+    case length(convs) do
+      0 -> ~L"""
+      <div style="display:none"></div>
+      """
+      any -> ~L"""
+      <div id="chat-list-component">
+        <%= render_direct_messages(assigns, convs) %>
+      </div>
+      """
+    end
   end
 
-  defp render_direct_messages(assigns) do
-    convs = Pog.Chat.list_conversations(assigns.current_user_id)
+  defp render_direct_messages(assigns, convs) do
     ~L"""
     <ul>
       <%= for c <- convs do %>

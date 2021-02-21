@@ -73,7 +73,10 @@ defmodule Pog.Chat do
   Get the existing conversation with the giver user ids
   or create a new one
   """
-  def get_conversation_with_user(user_ids) do
+  def get_conversation_with_users(user_ids) do
+    IO.puts("QUERY >>\nSELECT p.conversation_id FROM chat_peers p WHERE user_id IN (#{
+      Enum.map(user_ids, fn uid -> "'#{uid}'" end) |> Enum.join(",")}) GROUP BY conversation_id HAVING COUNT(p.id) = #{
+        length(user_ids)}")
     convs = Ecto.Adapters.SQL.query!(Pog.Repo,
       "SELECT p.conversation_id FROM chat_peers p WHERE user_id IN (#{
         Enum.map(user_ids, fn uid -> "'#{uid}'" end) |> Enum.join(",")}) GROUP BY conversation_id HAVING COUNT(p.id) = #{
@@ -83,6 +86,14 @@ defmodule Pog.Chat do
       1 -> {:ok, Pog.Repo.get!(Conversation, Ecto.UUID.cast! List.first(List.first(convs.rows)))}
       _too_many -> merge_and_get(convs.rows)
     end
+  end
+
+  def create_conversation(user_ids) do
+    {:ok, conv} = %Conversation{}
+      |> Conversation.changeset(%{})
+      |> Pog.Repo.insert()
+    Enum.each(user_ids, fn uid -> add_peer(conv.id, uid) end)
+    {:ok, conv}
   end
 
   defp notify_other_peers(peers, message) do
@@ -95,14 +106,6 @@ defmodule Pog.Chat do
       |> Pog.Repo.update()
     Phoenix.PubSub.broadcast(Pog.PubSub, peer.user_id, {:new_message, message})
     :ok
-  end
-
-  defp create_conversation(user_ids) do
-    {:ok, conv} = %Conversation{}
-      |> Conversation.changeset(%{})
-      |> Pog.Repo.insert()
-    Enum.each(user_ids, fn uid -> add_peer(conv.id, uid) end)
-    {:ok, conv}
   end
 
   defp add_peer(conversation_id, user_id) do

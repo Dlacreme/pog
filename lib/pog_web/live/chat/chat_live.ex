@@ -21,7 +21,8 @@ defmodule PogWeb.ChatLive do
 
   @impl true
   def handle_event("chat_with", %{"id" => user_id}, socket) do
-    {:ok, conv} = Chat.get_conversation_with_user([user_id, socket.assigns.current_user.id])
+    IO.puts("WE HAVE THE CHAT WITH RIGHT??!")
+    {:ok, conv} = Chat.get_conversation_with_users([user_id, socket.assigns.current_user.id])
     open_conversation(socket, conv)
   end
 
@@ -39,6 +40,16 @@ defmodule PogWeb.ChatLive do
        input: "",
        messages: get_messages(socket.assigns.peers)
      )}
+  end
+
+  @impl true
+  def handle_info({:create_channel, channel}, socket) do
+    {:ok, conv} = Chat.create_conversation([socket.assigns.current_user.id] ++ Enum.map(channel.peers, fn p -> p.user_id end))
+    if channel.name != nil && String.first(channel.name) != nil do
+      Chat.Conversation.changeset(conv, %{name: channel.name})
+        |> Pog.Repo.update()
+    end
+    {:noreply, socket}
   end
 
   @impl true
@@ -84,7 +95,7 @@ defmodule PogWeb.ChatLive do
       |> Pog.Repo.update()
   end
 
-  defp is_in_peers(peers, peer_id) when peers == nil do
+  defp is_in_peers(peers, _peer_id) when peers == nil do
     false
   end
 
