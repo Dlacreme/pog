@@ -4,7 +4,7 @@ fn f -> %>
 
 
   <%= if @changeset.action do %>
-    <%= render LayoutView, "_notification.html",
+    <%= render PogWeb.LayoutView, "_notification.html",
               text: dgettext("errors", "Oops, something went wrong! Please check the errors below."),
               type: :error %>
   <% end %>
