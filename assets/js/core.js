@@ -16,9 +16,26 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
+import "../css/animxyz.css";
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, {
+    params: {_csrf_token: csrfToken},
+    hooks: {
+        Autoclear: {
+            mounted() {
+              setTimeout(() => {
+                let c = this.el.parentElement.parentElement.classList;
+                c.add('xyz-fade')
+                c.add('xyz-out')
+                setTimeout(() => {
+                  this.pushEvent('lv:clear-flash', this.el.attributes['phx-value-key'].value)
+                }, 2000);
+              }, 5000);
+            }
+          }
+    }
+})
 
 // Show progress bar on live navigation and form submits
 window.addEventListener("phx:page-loading-start", info => NProgress.start())
