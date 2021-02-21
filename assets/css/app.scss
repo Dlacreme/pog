@@ -3,8 +3,6 @@
 @tailwind utilities;
 @import "../node_modules/nprogress/nprogress.css";
 @import "./variables";
-@import "./form";
-@import "./chat";
 
 .hidden {
   display: none !important;
@@ -164,3 +162,9 @@ header {
     margin: auto;
   }
 }
+
+
+
+
+@import "./form";
+@import "./chat";
