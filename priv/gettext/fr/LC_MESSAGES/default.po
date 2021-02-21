@@ -11,295 +11,295 @@ msgid ""
 msgstr ""
 
 #, elixir-format
-#: lib/distanciel_web/live/page_live.html.leex:2
+#: lib/pog_web/live/page_live.html.leex:2
 msgid "Welcome to %{name}!"
 msgstr "Bienvenue %{name} !"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:45
+#: lib/pog/accounts/user_notifier.ex:45
 msgid "Confirm my account"
 msgstr "Confirmer mon compte"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:36
+#: lib/pog/accounts/user_notifier.ex:36
 msgid "Hi %{email},\n\nYou can confirm your account by clicking below:\n"
 msgstr "Bonjour %{email},\n\nVous pouvez confirmez votre compte en cliquant ci-dessous:\n"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:46
+#: lib/pog/accounts/user_notifier.ex:46
 msgid "If you didn't create an account with us, please ignore this."
 msgstr " Si vous n'avez pas créé de compte avec nous, merci d'ignorer cet email."
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:58
+#: lib/pog/accounts/user_notifier.ex:58
 msgid "Hi %{email},\n\nYou can reset your password by clicking below:\n"
 msgstr "Bonjour %{email},\n\nVous pouvez changer votre mot de passe en cliquant ici:"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:68 lib/distanciel/accounts/user_notifier.ex:90
+#: lib/pog/accounts/user_notifier.ex:68 lib/pog/accounts/user_notifier.ex:90
 msgid "If you didn't request this change, please ignore this."
 msgstr "Si vous n'avez pas émis cette demande, merci d'ignorer cet email."
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:67
+#: lib/pog/accounts/user_notifier.ex:67
 msgid "Reset my password"
 msgstr "Changer mon mot de passe"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:56
+#: lib/pog/accounts/user_notifier.ex:56
 msgid "Reset your password"
 msgstr "Changer votre mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/layout/_menu.html.leex:32
+#: lib/pog_web/templates/layout/_menu.html.leex:32
 msgid "Log out"
 msgstr "Se déconnecter"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:34
+#: lib/pog/accounts/user_notifier.ex:34
 msgid "Confirm your account"
 msgstr "Confirmer votre compte"
 
 #, elixir-format
-#: lib/distanciel_web/live/pricing_live.html.leex:7
-#: lib/distanciel_web/templates/layout/_menu.html.leex:24
+#: lib/pog_web/live/pricing_live.html.leex:7
+#: lib/pog_web/templates/layout/_menu.html.leex:24
 msgid "Pricing"
 msgstr "Tarifs"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:72
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:105
+#: lib/pog_web/templates/user_settings/edit.html.eex:72
+#: lib/pog_web/templates/user_settings/edit.html.eex:105
 msgid "Change password"
 msgstr "Changer le mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:26
+#: lib/pog_web/templates/user_settings/edit.html.eex:26
 msgid "Change your Email"
 msgstr "Changez votre courriel"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:17
+#: lib/pog_web/templates/user_settings/edit.html.eex:17
 msgid "Change your personal details here"
 msgstr "Editez vos données personnelles ici"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:36
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:89
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:36
+#: lib/pog_web/templates/user_settings/edit.html.eex:89
 msgid "Confirm new password"
 msgstr "Confirmer le mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:48
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:55 lib/distanciel_web/templates/user_settings/edit.html.eex:97
+#: lib/pog_web/templates/user_settings/edit.html.eex:48
+#: lib/pog_web/templates/user_settings/edit.html.eex:55 lib/pog_web/templates/user_settings/edit.html.eex:97
 msgid "Current Password"
 msgstr "Mot de passe actuel"
 
 #, elixir-format
-#: lib/distanciel_web/templates/layout/_notification.html.leex:22
+#: lib/pog_web/templates/layout/_notification.html.leex:22
 msgid "Dismiss"
 msgstr "Ignorer"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_confirmation/new.html.eex:4
-#: lib/distanciel_web/templates/user_confirmation/new.html.eex:5 lib/distanciel_web/templates/user_registration/new.html.eex:23
-#: lib/distanciel_web/templates/user_registration/new.html.eex:26 lib/distanciel_web/templates/user_reset_password/new.html.eex:15
-#: lib/distanciel_web/templates/user_reset_password/new.html.eex:26 lib/distanciel_web/templates/user_session/new.html.eex:24
-#: lib/distanciel_web/templates/user_session/new.html.eex:28 lib/distanciel_web/templates/user_settings/edit.html.eex:43
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:44
+#: lib/pog_web/templates/user_confirmation/new.html.eex:4
+#: lib/pog_web/templates/user_confirmation/new.html.eex:5 lib/pog_web/templates/user_registration/new.html.eex:23
+#: lib/pog_web/templates/user_registration/new.html.eex:26 lib/pog_web/templates/user_reset_password/new.html.eex:15
+#: lib/pog_web/templates/user_reset_password/new.html.eex:26 lib/pog_web/templates/user_session/new.html.eex:24
+#: lib/pog_web/templates/user_session/new.html.eex:28 lib/pog_web/templates/user_settings/edit.html.eex:43
+#: lib/pog_web/templates/user_settings/edit.html.eex:44
 msgid "Email"
 msgstr "Courriel"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:55
-#: lib/distanciel_web/templates/user_reset_password/new.html.eex:7 lib/distanciel_web/templates/user_session/new.html.eex:51
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:32
+#: lib/pog_web/templates/user_registration/new.html.eex:55
+#: lib/pog_web/templates/user_reset_password/new.html.eex:7 lib/pog_web/templates/user_session/new.html.eex:51
+#: lib/pog_web/templates/user_settings/edit.html.eex:32
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:22
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:83
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:22
+#: lib/pog_web/templates/user_settings/edit.html.eex:83
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/layout/_menu.html.leex:35
-#: lib/distanciel_web/templates/user_reset_password/new.html.eex:55 lib/distanciel_web/templates/user_session/new.html.eex:57
+#: lib/pog_web/templates/layout/_menu.html.leex:35
+#: lib/pog_web/templates/user_reset_password/new.html.eex:55 lib/pog_web/templates/user_session/new.html.eex:57
 msgid "Sign in"
 msgstr "Connexion"
 
 #, elixir-format
-#: lib/distanciel_web/templates/layout/_menu.html.leex:37
+#: lib/pog_web/templates/layout/_menu.html.leex:37
 msgid "Sign up"
 msgstr "Inscription"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:31
+#: lib/pog_web/templates/user_settings/edit.html.eex:31
 msgid "You need to enter your password to change your email."
 msgstr "Vous devez entrer votre mot de passe pour changer votre courriel"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:60
+#: lib/pog_web/templates/user_settings/edit.html.eex:60
 msgid "Change email"
 msgstr "Changez votre courriel"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_settings/edit.html.eex:77
+#: lib/pog_web/templates/user_settings/edit.html.eex:77
 msgid "Create a new password."
 msgstr "Créez un nouveau mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_settings_controller.ex:30
+#: lib/pog_web/controllers/user_settings_controller.ex:30
 msgid "A link to confirm your email change has been sent to the new address."
 msgstr "Un lien pour confirmer votre courriel à été envoyé à la nouvelle adresse"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_confirmation_controller.ex:39
+#: lib/pog_web/controllers/user_confirmation_controller.ex:39
 msgid "Account confirmed successfully."
 msgstr "Votre compte est maintenant confirmé"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:89
+#: lib/pog/accounts/user_notifier.ex:89
 msgid "Change my email"
 msgstr "Changez votre courriel"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:78
+#: lib/pog/accounts/user_notifier.ex:78
 msgid "Change your email"
 msgstr "Changez votre courriel"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_settings_controller.ex:64
+#: lib/pog_web/controllers/user_settings_controller.ex:64
 msgid "Email change link is invalid or it has expired."
 msgstr "Le lien pour changer votre courriel est invalide ou à expiré"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_settings_controller.ex:59
+#: lib/pog_web/controllers/user_settings_controller.ex:59
 msgid "Email changed successfully."
 msgstr "Courriel changé avec succès"
 
 #, elixir-format
-#: lib/distanciel/accounts/user_notifier.ex:80
+#: lib/pog/accounts/user_notifier.ex:80
 msgid "Hi %{email},\n\nYou can change your email by clicking below:\n"
 msgstr "Bonjour %{email},\n\nVous pouvez confirmez votre compte en cliquant ci-dessous:\n"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_confirmation_controller.ex:23
+#: lib/pog_web/controllers/user_confirmation_controller.ex:23
 msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 msgstr "Si votre courriel est dans notre système et n'est pas confirmé, vous allez recevoir un courriel prochainement"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_reset_password_controller.ex:36
+#: lib/pog_web/controllers/user_reset_password_controller.ex:36
 msgid "If your email is in our system, you will receive instructions to reset your password shortly."
 msgstr "Si votre courriel est dans notre système, vous allez recevoir des instructions pour changer votre mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_session_controller.ex:25
+#: lib/pog_web/controllers/user_session_controller.ex:25
 msgid "Logged out successfully."
 msgstr "Vous ếtes déconnecté."
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_reset_password_controller.ex:54
+#: lib/pog_web/controllers/user_reset_password_controller.ex:54
 msgid "Password reset successfully."
 msgstr "Mot de passe changé avec succès"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_settings_controller.ex:46
+#: lib/pog_web/controllers/user_settings_controller.ex:46
 msgid "Password updated successfully."
 msgstr "Mot de passe changé avec succès"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_reset_password_controller.ex:69
+#: lib/pog_web/controllers/user_reset_password_controller.ex:69
 msgid "Reset password link is invalid or it has expired."
 msgstr "Le lien de changement de mot de passe est invalide ou à expiré."
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_registration_controller.ex:25
+#: lib/pog_web/controllers/user_registration_controller.ex:25
 msgid "User created successfully."
 msgstr "Compte crée avec succès"
 
 #, elixir-format
-#: lib/distanciel_web/controllers/user_reset_password_controller.ex:26
+#: lib/pog_web/controllers/user_reset_password_controller.ex:26
 msgid "You will receive instructions to reset your password on %{email}."
 msgstr "Vous allez recevoir un courriel pour réinitialiser votre mot de passe sur %{email}."
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:72
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:60 lib/distanciel_web/templates/user_reset_password/new.html.eex:48
-#: lib/distanciel_web/templates/user_session/new.html.eex:68
+#: lib/pog_web/templates/user_registration/new.html.eex:72
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:60 lib/pog_web/templates/user_reset_password/new.html.eex:48
+#: lib/pog_web/templates/user_session/new.html.eex:68
 msgid "Or"
 msgstr "Ou"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:35
-#: lib/distanciel_web/templates/user_registration/new.html.eex:39 lib/distanciel_web/templates/user_reset_password/edit.html.eex:26
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:40 lib/distanciel_web/templates/user_session/new.html.eex:34
-#: lib/distanciel_web/templates/user_session/new.html.eex:38
+#: lib/pog_web/templates/user_registration/new.html.eex:35
+#: lib/pog_web/templates/user_registration/new.html.eex:39 lib/pog_web/templates/user_reset_password/edit.html.eex:26
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:40 lib/pog_web/templates/user_session/new.html.eex:34
+#: lib/pog_web/templates/user_session/new.html.eex:38
 msgid "Password"
 msgstr "Mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_confirmation/new.html.eex:13
-#: lib/distanciel_web/templates/user_registration/new.html.eex:61
+#: lib/pog_web/templates/user_confirmation/new.html.eex:13
+#: lib/pog_web/templates/user_registration/new.html.eex:61
 msgid "Register"
 msgstr "S'inscrire"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:8
-#: lib/distanciel_web/templates/user_session/new.html.eex:75
+#: lib/pog_web/templates/user_registration/new.html.eex:8
+#: lib/pog_web/templates/user_session/new.html.eex:75
 msgid "Register your account"
 msgstr "Créez votre compte"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:50
-#: lib/distanciel_web/templates/user_session/new.html.eex:46
+#: lib/pog_web/templates/user_registration/new.html.eex:50
+#: lib/pog_web/templates/user_session/new.html.eex:46
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_registration/new.html.eex:79
-#: lib/distanciel_web/templates/user_session/new.html.eex:9
+#: lib/pog_web/templates/user_registration/new.html.eex:79
+#: lib/pog_web/templates/user_session/new.html.eex:9
 msgid "Sign in to your account"
 msgstr "Connectez vous à votre compte"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:71
-#: lib/distanciel_web/templates/user_reset_password/new.html.eex:59
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:71
+#: lib/pog_web/templates/user_reset_password/new.html.eex:59
 msgid "Create an account"
 msgstr "S'inscrire"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_confirmation/new.html.eex:14
+#: lib/pog_web/templates/user_confirmation/new.html.eex:14
 msgid "Log in"
 msgstr "Connexion"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_confirmation/new.html.eex:8
+#: lib/pog_web/templates/user_confirmation/new.html.eex:8
 msgid "Resend confirmation instructions"
 msgstr "Renvoyez un courriel de confirmation"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:15
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:49
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:15
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:49
 msgid "Reset password"
 msgstr "Changer mon mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/edit.html.eex:67
+#: lib/pog_web/templates/user_reset_password/edit.html.eex:67
 msgid "Sign-in to your account"
 msgstr "Connectez vous à votre compte"
 
 #, elixir-format
-#: lib/distanciel_web/templates/user_reset_password/new.html.eex:36
+#: lib/pog_web/templates/user_reset_password/new.html.eex:36
 msgid "Send instructions to reset password"
 msgstr "Envoyer un courriel pour réinitialiser le mot de passe"
 
 #, elixir-format
-#: lib/distanciel_web/live/wallet_live/wallet_component.html.leex:25
+#: lib/pog_web/live/wallet_live/wallet_component.html.leex:25
 msgid "Are you sure?"
 msgstr ""
 
 #, elixir-format
-#: lib/distanciel_web/templates/layout/_menu.html.leex:21
+#: lib/pog_web/templates/layout/_menu.html.leex:21
 msgid "Wallets"
 msgstr ""
