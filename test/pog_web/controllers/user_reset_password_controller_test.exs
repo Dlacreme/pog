@@ -3,17 +3,40 @@ defmodule PogWeb.UserResetPasswordControllerTest do
 
   alias Pog.Accounts
   alias Pog.Repo
+  alias PogWeb.UserAuth
+
   import Pog.AccountsFixtures
 
-  setup do
-    %{user: user_fixture()}
+  setup %{conn: conn} do
+    conn =
+      conn
+      |> Map.replace!(:secret_key_base, PogWeb.Endpoint.config(:secret_key_base))
+      |> init_test_session(%{})
+
+    %{user: user_fixture(), conn: conn}
   end
 
   describe "GET /users/reset_password" do
     test "renders the reset password page", %{conn: conn} do
       conn = get(conn, Routes.user_reset_password_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Forgot your password?</h1>"
+      assert response =~ "Forgot your password?</h2>"
+    end
+  end
+
+  describe "GET /users/reset_password logged with user" do
+    test "renders the reset password page logged with user", %{
+      conn: conn,
+      user: user
+    } do
+      user_token = user |> Accounts.generate_user_session_token()
+      conn = conn |> put_session(:user_token, user_token) |> UserAuth.fetch_current_user([])
+
+      response =
+        get(conn, Routes.user_reset_password_path(conn, :new))
+        |> html_response(200)
+
+      assert response =~ "value=\"#{user.email}\" disabled"
     end
   end
 
@@ -54,7 +77,7 @@ defmodule PogWeb.UserResetPasswordControllerTest do
 
     test "renders reset password", %{conn: conn, token: token} do
       conn = get(conn, Routes.user_reset_password_path(conn, :edit, token))
-      assert html_response(conn, 200) =~ "<h1>Reset password</h1>"
+      assert html_response(conn, 200) =~ "Reset password</h2>"
     end
 
     test "does not render reset password with invalid token", %{conn: conn} do
@@ -93,13 +116,13 @@ defmodule PogWeb.UserResetPasswordControllerTest do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{
           "user" => %{
-            "password" => "too short",
+            "password" => "short",
             "password_confirmation" => "does not match"
           }
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Reset password</h1>"
+      assert response =~ "Reset password</h2>"
       assert response =~ "should be at least 8 character(s)"
       assert response =~ "does not match password"
     end

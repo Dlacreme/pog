@@ -23,3 +23,6 @@ config :pog, PogWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :pog, Pog.Mailer, adapter: Bamboo.TestAdapter
+config :pog, Pog.Mailer, smtp_email_address: "hello@example.com"

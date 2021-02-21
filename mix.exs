@@ -37,7 +37,6 @@ defmodule Pog.MixProject do
       {:phoenix, "~> 1.5.7"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
-      {:floki, ">= 0.27.0", only: :test},
       {:phoenix_live_view, "~> 0.15.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -51,7 +50,13 @@ defmodule Pog.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:kaffy, "0.9.0"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
-      {:membrane_webrtc_server, "~> 0.1.0"}
+      {:membrane_webrtc_server, "~> 0.1.0"},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:bamboo, "~> 1.6"},
+      {:premailex, "~> 0.3.0"},
+      {:ex_cldr_dates_times, "~> 2.6"},
+      {:ex_cldr_calendars, "~> 1.12"},
+      {:ex_cldr, "~> 2.0"}
     ]
   end
 

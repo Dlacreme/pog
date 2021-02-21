@@ -1,11 +1,15 @@
 <ul class="flex items-center">
-<%= if @current_user do %>
-  <li class="pointer ml-6 mr-2" onclick="trigger.switchClass(getter.class('user-menu'), 'hidden')"><%= @current_user.email %></li>
-  <li class="user-menu w-4 pointer bg-gray-800" onclick="trigger.switchClass(getter.class('user-menu'), 'hidden')">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-  </li>
-  <li class="user-menu hidden w-4 pointer  bg-gray-800" onclick="trigger.switchClass(getter.class('user-menu'), 'hidden')">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
-  </li>
-<% end %>
+  <%= if @current_user do %>
+    <%= live_patch @current_user.email, to: Routes.user_settings_path(@conn, :edit),
+        class: "text-base font-medium text-white hover:text-purple-500" %>
+    <%= link gettext("Log out"), to: Routes.user_session_path(@conn, :delete), method: :delete,
+        class: "ml-8 text-base font-medium text-white hover:text-purple-500" %>
+  <% else %>
+    <%= live_patch gettext("Sign in"), to: Routes.user_session_path(@conn, :new),
+        class: "text-base font-medium text-white hover:text-purple-500" %>
+    <%= live_patch gettext("Sign up"), to: Routes.user_registration_path(@conn, :new),
+        class: "ml-8 inline-flex items-center justify-center px-4 py-2
+                border border-transparent rounded-md shadow-sm text-base font-medium
+                text-white hover:text-purple-500 bg-indigo-600 hover:bg-indigo-700" %>
+  <% end %>
 </ul>

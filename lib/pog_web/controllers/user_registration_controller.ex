@@ -4,6 +4,7 @@ defmodule PogWeb.UserRegistrationController do
   alias Pog.Accounts
   alias Pog.Accounts.User
   alias PogWeb.UserAuth
+  import PogWeb.Gettext
 
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
@@ -20,7 +21,7 @@ defmodule PogWeb.UserRegistrationController do
           )
 
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, gettext("User created successfully."))
         |> UserAuth.log_in_user(user)
 
       {:error, %Ecto.Changeset{} = changeset} ->
